@@ -1232,7 +1232,7 @@
             this.Controls.Add(this.dockSiteTop);
             this.Controls.Add(this.dockSite8);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "土地利用现状";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
