@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3704ED5D-8D1B-473B-B62C-DF4B867BCEA3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LandMap</RootNamespace>
+    <AssemblyName>LandMap</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=7.8.0.2, Culture=neutral, PublicKeyToken=5fd520d36328f741, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DotNetBar2\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.1.271, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ChineseAnalyzer\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ChineseAnalyzer\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Analysis.China, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ChineseAnalyzer\Lucene.Net.Analysis.China.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>zedgraph\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoordSysTranslator.cs" />
+    <Compile Include="PoiSearch.cs" />
+    <Compile Include="TypeCode.cs" />
+    <Compile Include="WeatherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeatherForm.designer.cs">
+      <DependentUpon>WeatherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeatherForm.resx">
+      <DependentUpon>WeatherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropertyForm.resx">
+      <DependentUpon>PropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertyForm.Designer.cs">
+      <DependentUpon>PropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WeatherWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
+    <Compile Include="StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxSuperMapLib">
+      <Guid>{03ED3B1E-ED1B-4A2E-8FE3-D8D1A673F5D4}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="SuperMapLib">
+      <Guid>{03ED3B1E-ED1B-4A2E-8FE3-D8D1A673F5D4}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WeatherWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WeatherWebService\WeatherWebService.disco" />
+    <None Include="Service References\WeatherWebService\WeatherWebService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WeatherWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WeatherWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Service References\WeatherWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\9.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\12.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\13.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\14.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\15.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\16.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\17.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\18.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\19.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\21.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\22.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\23.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\25.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\26.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\27.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\28.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\31.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_9.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_12.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_13.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_14.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_15.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_16.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_17.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_18.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_19.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_21.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_22.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_23.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_25.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_26.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_27.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_28.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_31.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\a_nothing.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_9.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_12.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_13.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_14.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_15.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_16.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_17.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_18.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_19.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_21.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_22.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_23.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_24.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_25.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_26.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_27.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_28.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_31.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\b_nothing.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\nothing.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\r_b.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\r_t1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\tem1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\tem2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\tem3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\tem4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather\tem5.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
