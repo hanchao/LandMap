@@ -12,6 +12,7 @@
     <AssemblyName>LandMap</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>kgyo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -521,6 +522,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\weather\tem5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kgyo.ico" />
+    <Content Include="search-map.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
